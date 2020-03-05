@@ -15,13 +15,22 @@ const User = db.define("user", {
 
 
 const UserProfile = db.define("user_profile", {
-  name: {
+  imgUrl: {
+    type: Sequelize.STRING
+  },
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
+  },
+  houseNo: {
+    type: Sequelize.STRING
+  },
+  postCode: {
     type: Sequelize.STRING
   },
   about: {
-    type: Sequelize.STRING
-  },
-  imgUrl: {
     type: Sequelize.STRING
   }
 })
