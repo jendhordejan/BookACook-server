@@ -1,6 +1,6 @@
 const { Router } = require("express");
 const router = new Router();
-const https = require("https");
+// const https = require("https");
 
 const { User, UserProfile, UserAddress } = require("./model");
 
