@@ -1,4 +1,3 @@
-  
 const db = require("../db");
 const Sequelize = require("sequelize");
 
@@ -13,19 +12,67 @@ const User = db.define("user", {
   }
 });
 
-
 const UserProfile = db.define("user_profile", {
-  name: {
+  imageUrl: {
+    type: Sequelize.STRING
+  },
+  firstName: {
+    type: Sequelize.STRING
+  },
+  lastName: {
+    type: Sequelize.STRING
+  },
+  houseNo: {
+    type: Sequelize.STRING
+  },
+  postCode: {
     type: Sequelize.STRING
   },
   about: {
     type: Sequelize.STRING
+  }
+});
+
+const UserAddress = db.define("user_address", {
+  street: {
+    type: Sequelize.STRING
   },
-  imgUrl: {
+  city: {
+    type: Sequelize.STRING
+  },
+  municipality: {
+    type: Sequelize.STRING
+  },
+  province: {
+    type: Sequelize.STRING
+  },
+  houseno: {
+    type: Sequelize.STRING
+  },
+  postcode: {
+    type: Sequelize.STRING
+  },
+  pnum: {
+    type: Sequelize.STRING
+  },
+  pchar: {
+    type: Sequelize.STRING
+  },
+  rd_x: {
+    type: Sequelize.STRING
+  },
+  rd_y: {
+    type: Sequelize.STRING
+  },
+  lat: {
+    type: Sequelize.STRING
+  },
+  lon: {
     type: Sequelize.STRING
   }
-})
+});
 
-UserProfile.belongsTo(User)
+UserProfile.belongsTo(User);
+UserAddress.belongsTo(User);
 
-module.exports = {User, UserProfile};
+module.exports = { User, UserProfile, UserAddress };
