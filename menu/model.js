@@ -8,32 +8,12 @@ const Menu = db.define("menu", {
     allowNull: false
   },
   description: {
-    type: Sequelize.STRING,
-    allowNull: true
-  },
-  price: {
-    type: Sequelize.INTEGER
-  }
-});
-
-const Dish = db.define("dish", {
-  imageUrl: {
-    type: Sequelize.STRING
-  },
-  name: {
-    type: Sequelize.STRING,
-    allowNull: false
-  },
-  description: {
-    type: Sequelize.STRING,
+    type: Sequelize.STRING(500),
     allowNull: true
   }
 });
 
 Menu.belongsTo(User);
 User.hasMany(Menu);
-
-Dish.belongsTo(Menu);
-Menu.hasMany(Dish);
 
 module.exports = { Menu };
