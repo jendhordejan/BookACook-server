@@ -73,6 +73,9 @@ const UserAddress = db.define("user_address", {
 });
 
 UserProfile.belongsTo(User);
+User.hasOne(UserProfile);
+
 UserAddress.belongsTo(User);
+User.hasOne(UserAddress);
 
 module.exports = { User, UserProfile, UserAddress };
