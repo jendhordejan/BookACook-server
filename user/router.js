@@ -90,10 +90,16 @@ router.post("/user/login", async (request, response, next) => {
       const token = toJWT({ id: user.dataValues.id });
       const { id, email } = user.dataValues;
 
+      const userProfile = await User.findByPk(id, {
+        include: [UserProfile, UserAddress]
+      });
+
       response.json({
         status: 200,
         message: "Login Successful",
-        user: { id, email, token }
+        user: { id, email, token },
+        userProfile: userProfile.user_profile,
+        userAddress: userProfile.user_address
       });
       return;
     } else {
