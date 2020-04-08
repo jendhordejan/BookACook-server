@@ -8,7 +8,18 @@ const { Dish } = require("./model");
 router.get("/alldishes", async (request, response, next) => {
   try {
     const allDish = await Dish.findAll();
-    response.json(allDish);
+
+    let allDishes = [];
+    allDish.map(dishItem => {
+      allDishes = [...allDishes, dishItem.dataValues];
+    });
+    console.log("ALL DISH ===================", allDishes);
+    response.json({
+      message: "Fetched All Dishes",
+      // menus: allMenuByUserId[0].dataValues
+      allDishes
+    });
+    // response.json(allDishes);
   } catch (err) {
     next(err);
   }
