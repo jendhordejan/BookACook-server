@@ -27,10 +27,20 @@ router.get("/menus/:id", async (request, response, next) => {
       include: [{ model: Dish }]
     });
     // response.json(allMenuByUserId);
-    console.log("allMenuByUserId:   ", allMenuByUserId);
+
+    console.log("allMenuByUserId:   ", allMenuByUserId[0].dataValues);
+
+    let allMenus = [];
+    allMenuByUserId.map(menuItem => {
+      allMenus = [...allMenus, menuItem.dataValues];
+    });
+
+    console.log("allMenus=======================:", allMenus);
+
     response.json({
       message: "Fetched All Menu for this user",
-      menus: { ...allMenuByUserId }
+      // menus: allMenuByUserId[0].dataValues
+      menus: allMenus
     });
   } catch (err) {
     next(err);
